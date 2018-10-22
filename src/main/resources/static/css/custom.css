@@ -1,0 +1,41 @@
+body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .navbarBrandHeading{
+    color:#068BC3;
+    font-weight: bold;
+    }
+    .navbar{
+    --background-color:lightblue !important;
+    
+    }
+    .maincontainer{
+    margin-top:0px !important;
+    margin-bottom:50px !important;
+    }
+    .card-header-bg{
+    color:white;
+    background-color:#068BC3;
+    }
+    .id-card-header{
+    background-color:#BEEAFD !important;
+    }
+    .breadcrumbs{
+    background-color:#ffffff !important;
+    
+    }.id-card-header-white-bg{
+    background-color:blue !important;
+    --padding-top:-20px !important;
+    }
+    .modal-lg {
+    max-width: 90% !important;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+
+.bs-wizard {margin-top: 40px;}
+
+/*Form Wizard*/
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {:}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+
+.bs-wizard > .bs-wizard-step.complete > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block;background: #B1D29D; top: 65px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step.complete > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #70AA4B; border-radius: 50px; position: absolute; top: 8px; left: 8px; }
+
+.bs-wizard > .bs-wizard-step.active > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block;background: #C4E2EF; top: 65px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step.active > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #068BC3; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+
+
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block;background: #E2E2E2; top: 65px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #777777; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar-complete {width:0px; box-shadow: none; background: #B1D29D;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar-active {width:0px; box-shadow: none; background: #B1D29D;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar-disabled {width:0px; box-shadow: none; background: #E2E2E2;}
+
+
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar-complete {width:100%;}
+
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar-active {width:50%;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar-active-first {width:0%;}
+
+
+
+.bs-wizard > .bs-wizard-step> .progress > .progress-bar-disabled {width:0%;}
+
+
+
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+
+
+.progressfontsize{
+font-size:14px !important;
+}
+
+.disablecolor{
+color:#777777 !important;
+
+}
+.activecolor{
+color:#068BC3 !important;
+}
+.completecolor{
+color:#70AA4B !important;
+}
+
