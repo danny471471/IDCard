@@ -24,7 +24,8 @@ public class IdCard {
 	private String rxBin;
 	private String rxPcn;
 	private String rxLogo;
-	private String[] coPayList;
+	//private String[] coPayList;
+	private Map<String,String> coPayList;
 	private String copay;
 	private Map<String, String> copayMap = new HashMap<String, String>();
 	private String tfns;
@@ -143,10 +144,11 @@ public class IdCard {
 	public void setRxLogo(String rxLogo) {
 		this.rxLogo = rxLogo;
 	}
-	public String[] getCoPayList() {
+	
+	public Map<String, String> getCoPayList() {
 		return coPayList;
 	}
-	public void setCoPayList(String[] coPayList) {
+	public void setCoPayList(Map<String, String> coPayList) {
 		this.coPayList = coPayList;
 	}
 	public String getCopay() {
@@ -265,14 +267,14 @@ public class IdCard {
 				+ Arrays.toString(logoList) + ", logo=" + logo + ", alphaPrefix=" + alphaPrefix + ", pcpRequired="
 				+ pcpRequired + ", planCodeList=" + Arrays.toString(planCodeList) + ", planCode=" + planCode
 				+ ", planDescription1=" + planDescription1 + ", planDescription2=" + planDescription2 + ", rxBin="
-				+ rxBin + ", rxPcn=" + rxPcn + ", rxLogo=" + rxLogo + ", coPayList=" + Arrays.toString(coPayList)
-				+ ", copay=" + copay + ", copayMap=" + copayMap + ", tfns=" + tfns + ", claimRouteStateCode="
-				+ claimRouteStateCode + ", memberServices=" + memberServices + ", claimsAndAddressEnquiry1="
-				+ claimsAndAddressEnquiry1 + ", claimsAndAddressEnquiry2=" + claimsAndAddressEnquiry2 + ", nursuryLine="
-				+ nursuryLine + ", preCertification=" + preCertification + ", lhoUrl=" + lhoUrl
-				+ ", pharmacistQuestions=" + pharmacistQuestions + ", idCardSticker=" + idCardSticker
-				+ ", coverageWhileTravelling=" + coverageWhileTravelling + ", tagLineState=" + tagLineState
-				+ ", isIdCardPerisisted=" + isIdCardPerisisted + ", isIdCardActivated=" + isIdCardActivated + "]";
+				+ rxBin + ", rxPcn=" + rxPcn + ", rxLogo=" + rxLogo + ", coPayList=" + coPayList + ", copay=" + copay
+				+ ", copayMap=" + copayMap + ", tfns=" + tfns + ", claimRouteStateCode=" + claimRouteStateCode
+				+ ", memberServices=" + memberServices + ", claimsAndAddressEnquiry1=" + claimsAndAddressEnquiry1
+				+ ", claimsAndAddressEnquiry2=" + claimsAndAddressEnquiry2 + ", nursuryLine=" + nursuryLine
+				+ ", preCertification=" + preCertification + ", lhoUrl=" + lhoUrl + ", pharmacistQuestions="
+				+ pharmacistQuestions + ", idCardSticker=" + idCardSticker + ", coverageWhileTravelling="
+				+ coverageWhileTravelling + ", tagLineState=" + tagLineState + ", isIdCardPerisisted="
+				+ isIdCardPerisisted + ", isIdCardActivated=" + isIdCardActivated + "]";
 	}
 	
 	

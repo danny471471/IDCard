@@ -50,18 +50,26 @@
 			<dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>bootstrap</artifactId>
-		    <version>3.3.7</version>
+		    <version>4.1.3</version>
 		</dependency>
-		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>bootstrap-datepicker</artifactId>
-		    <version>1.0.1</version>
-		</dependency>
+		
 		<dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>jquery</artifactId>
-		    <version>1.9.1</version>
+		    <version>3.3.1</version>
 		</dependency>
+	<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>font-awesome</artifactId>
+    <version>5.4.1</version>
+</dependency>
+	<!-- https://mvnrepository.com/artifact/org.webjars.bower/roboto-fontface -->
+<dependency>
+    <groupId>org.webjars.bower</groupId>
+    <artifactId>roboto-fontface</artifactId>
+    <version>0.3.0</version>
+</dependency>
 	
 	<dependency>
 			<groupId>org.springframework.boot</groupId>

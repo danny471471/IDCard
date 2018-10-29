@@ -1,8 +1,6 @@
 $(document).ready(function(){
-	$(".previewDataLad").click(function(){
-        $("#desig").text($("#designId").val());
-   });
- 	
+
+	
   
     $('[id^=deleteCopay-]').hover(
   		function () {
@@ -36,37 +34,7 @@ $(document).ready(function(){
    	  }
    	  
     });
-   $("#addCopay").click(function(){
-   	
-   	var currentCopay = $("#copay").val();
-   	if(currentCopay != null && currentCopay != undefined && currentCopay != 'NONE'){
-   		var index = $('[id^=copayElemenet-]').length;
-	    	var newIndex = index+1;
-	    	if(index <8){
-	    	if(index >0){
-	    		var copayElement = $('#copayElemenet-1').clone(true,true).attr("id", "copayElemenet-"+newIndex);
-		    	copayElement.find("#copayLabel-1").attr("id","copayLabel-"+newIndex).text(currentCopay);
-		    	copayElement.find(".copayMapInput-1").attr("id", 'copayMap\''+currentCopay+'\'').attr("name", 'copayMap[\''+currentCopay+'\']').val("");
-		    	copayElement.find("#deleteCopay-1").attr("id","deleteCopay-"+newIndex);
-		    	copayElement.insertAfter("#copayElemenet-"+index);
-		    	disableCopays();
-		    	$("#copay").val("NONE");
-		    	if(newIndex === 8){
-		    		$("#addCopay").attr("disabled",true);
-		    	}
-		    }else{
-		    	var copayElement = $('#hidden-copayElemenet').clone(true,true).attr("id", "copayElemenet-"+newIndex);
-		    	copayElement.find("#hiddencopayLabel").attr("id","copayLabel-"+newIndex).text(currentCopay);
-		    	copayElement.find(".copayMapInput-1").attr("id", 'copayMap\''+currentCopay+'\'').attr("name", 'copayMap[\''+currentCopay+'\']').val("");
-		    	copayElement.find("#deleteCopay-0").attr("id","deleteCopay-"+newIndex);
-		    	copayElement.insertAfter("#copayElemenets");
-		    	$('#copayElemenet-'+newIndex).removeAttr('hidden');
-		    	disableCopays();
-		    	$("#copay").val("NONE"); 
-	    	}
-   	}
-   	}
-   }); 
+  
 	
 });
 
@@ -83,6 +51,40 @@ function enableOrDisablePlanDescrption(combinedIdCardValue){
 	    }
 }
 
+$("#addCopay").click(function(){
+   	
+    var currentCopay = $("#copay").val();
+   	var copayKey = currentCopay.split('_')[0];
+   	var copayVal = currentCopay.split('_')[1];
+   	if(copayKey != null && copayKey != undefined && copayKey != 'NONE'){
+   		var index = $('[id^=copayElemenet-]').length;
+	    	var newIndex = index+1;
+	    	if(index <8){
+	    	if(index >0){
+	    		var copayElement = $('#copayElemenet-1').clone(true,true).attr("id", "copayElemenet-"+newIndex);
+	    		copayElement.find("#copayLabel-1").attr("id","copayLabel-"+newIndex).text(copayKey);
+		    	copayElement.find(".copayMapInput-1").attr("id", 'copayMap\''+copayKey+'\'').attr("name", 'copayMap[\''+copayKey+'\']').val(copayVal);
+		    	copayElement.find("#deleteCopay-1").attr("id","deleteCopay-"+newIndex);
+		    	copayElement.insertAfter("#copayElemenet-"+index);
+		    	disableCopays();
+		    	$("#copay").val("NONE");
+		    	if(newIndex === 8){
+		    		$("#addCopay").attr("disabled",true);
+		    	}
+		    }else{
+		    	var copayElement = $('#hidden-copayElemenet').clone(true,true).attr("id", "copayElemenet-"+newIndex);
+		    	copayElement.find("#hiddencopayLabel").attr("id","copayLabel-"+newIndex).text(copayKey);
+		    	copayElement.find(".copayMapInput-1").attr("id", 'copayMap\''+copayKey+'\'').attr("name", 'copayMap[\''+copayKey+'\']').val(copayVal);
+		    	copayElement.find("#deleteCopay-0").attr("id","deleteCopay-"+newIndex);
+		    	copayElement.insertAfter("#copayElemenets");
+		    	$('#copayElemenet-'+newIndex).removeAttr('hidden');
+		    	disableCopays();
+		    	$("#copay").val("NONE"); 
+	    	}
+   	}
+   	}
+}); 
+
 
 function disableCopays(){
 	  $('[id^=copayLabel-]').each(function() {
@@ -90,7 +92,7 @@ function disableCopays(){
 		 currentIteratedCopay = $("#"+ida).text();
 		 $("#copay option").each(function() {
   	    var $thisOption = $(this);
-  	    if($thisOption.val() === currentIteratedCopay) {
+  	    if($thisOption.val().split('_')[0] === currentIteratedCopay) {
   	        $thisOption.attr("disabled", "disabled");
   	    }
 		 });
@@ -102,7 +104,7 @@ function disableCopays(){
 function enableCopay(currentCopay){
 	  $("#copay option").each(function() {
  	    var $thisOption = $(this);
- 	    if($thisOption.val() === currentCopay) {
+ 	    if($thisOption.val().split('_')[0] === currentCopay) {
  	        $thisOption.removeAttr("disabled");
  	    }
 	 });
@@ -116,7 +118,7 @@ function reassignCopayIds(index,copayElementLength){
 	   for(var i = newIndex,j=index;i<=copayElementLength;i++,j++){
 	   
 		    var currentCopay = $("#copayLabel-"+i).text();
-		    var copayValue = $(".copayMapInput-1").eq(j-1).val();   
+		    var copayValue = $(".copayMapInput-1:visible").eq(j-1).val();   
 		   
 		    var copayElement = $('#copayElemenet-1').clone(true,true).attr("id", "copayElemenet-"+j);
 		    copayElement.find("#copayLabel-1").attr("id","copayLabel-"+j).text(currentCopay);
@@ -126,15 +128,13 @@ function reassignCopayIds(index,copayElementLength){
 		  	$("#copayElemenet-"+i).remove();  
 	    } 
 	  }else if(index == 1){
-		  for(var i = newIndex,j=index;i<=copayElementLength;i++,j++){
+		   for(var i = newIndex,j=index;i<=copayElementLength;i++,j++){
 			   
 			    var currentCopay = $("#copayLabel-"+i).text();
-			    var copayValue = $(".copayMapInput-1").eq(j-1).val();   
+			    var copayValue = $(".copayMapInput-1:visible").eq(j-1).val();   
 			   	
-			    
-			    
 			    var copayElement = $('#hidden-copayElemenet').clone(true,true).attr("id", "copayElemenet-"+j);
-		    	copayElement.find("#hiddencopayLabel").attr("id","copayLabel-"+j).text(currentCopay);
+			    copayElement.find("#hiddencopayLabel").attr("id","copayLabel-"+j).text(currentCopay);
 		    	copayElement.find(".copayMapInput-1").attr("id", 'copayMap\''+currentCopay+'\'').attr("name", 'copayMap[\''+currentCopay+'\']').val(copayValue);
 		    	copayElement.find("#deleteCopay-0").attr("id","deleteCopay-"+j);
 		    	if(j == 1){
@@ -145,7 +145,7 @@ function reassignCopayIds(index,copayElementLength){
 		    	}
 		    	$('#copayElemenet-'+j).removeAttr('hidden');	
 			  	$("#copayElemenet-"+i).remove();  
-		    } 
+		    }  
 	  }
 }
 function idCardProgressDisplay(){
@@ -153,6 +153,7 @@ function idCardProgressDisplay(){
 	$("#step1-header").removeClass("activecolor");
 	$("#step1-progress").removeClass("progress-bar-active-first");
 	$("#step1").addClass("complete");
+	$("#step1-header").html("Save Template<br>(Complete)");
 	$("#step1-header").addClass("completecolor");
 	$("#step1-progress").addClass("progress-bar-complete");
 	
@@ -162,10 +163,39 @@ function idCardProgressDisplay(){
 	$("#step2-progress").removeClass("progress-bar-disabled");
 	$("#step2").addClass("active");
 	$("#step2-header").addClass("activecolor");
+	$("#step2-header").html("Account Manager Approval<br>(Pending)");
 	$("#step2-progress").addClass("progress-bar-active");
 	$("#savebutton").attr("disabled",true);
-	//$("#savebutton").attr("hidden",true);
 	$("#contactAccountManager").removeAttr("hidden");
 	$('.alert').removeAttr("hidden");
 	$('.alert').show();
+}
+
+
+
+function loadPreview(visibilityStatus){
+	 if(null != $("#planCode").val() && $("#planCode").val()!= undefined && $("#planCode").val() != 'NONE'){
+			$("#previewPlanCode").text($("#planCode").val());	
+		} 
+    $("#previewRxBin").text($("#rxBin").val());
+    $("#previewRxPcn").text($("#rxPcn").val());
+    $("#previewProduct").text($("#productType").val());
+    $("#previewTfns").text($("#tfns").val());
+    $("#previewMemberServiceLine").text($("#memberServices").val());
+    $("#previewNursuryLine").text($("#nursuryLine").val());
+    $("#previewPreCertification").text($("#preCertification").val());
+    $("#previewCoverageWhileTraveling").text($("#coverageWhileTravelling").val());
+    
+    for(var i =1;i<=8;i++){
+    	$("#previewCopayLabel"+i).text("");
+    	$("#previewCopay"+i).text("");
+    }
+    $('input[type="text"].copayMapInput-1:'+visibilityStatus).each(function (index) {
+    	$("#previewCopayLabel"+(index+1)).text($("#copayLabel-"+(index+1)).text());
+        
+    	 if(null != $(this).val() && $(this).val() != undefined && $(this).val() != ""){
+        	$("#previewCopay"+(index+1)).text("$"+$(this).val());	
+        } 
+    	
+    });
 }

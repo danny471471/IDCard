@@ -6,12 +6,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+       <link rel="stylesheet" href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link href='webjars/roboto-fontface/0.3.0/roboto-fontface.css' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/webjars/font-awesome/5.4.1/css/all.css">
+	<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/webjars/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<title>ID Card Design- FrontView</title>
 	<link href="css/custom.css" rel='stylesheet' type='text/css'>
 	<script src="js/custom.js" ></script>
@@ -20,16 +21,27 @@
   
   <script>
   $(document).ready(function(){
+	  
+		 $(".previewDataLad").click(function(){
+			loadPreview('visible');
+	   });
+		
+	  
+	  
 	  disableCopays();
 	  enableOrDisablePlanDescrption($("input[name='combinedIdCard']:checked").val());
 	});
+  
+
+  
+  
   </script>
   
   <body>
  
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">
-  <img  style = "widht:25px;height:30px;" src = "https://mbtskoudsalg.com/images/anthem-blue-cross-logo-png-6.png"/>
+  <img  style = "widht:auto;height:30px;" src = "/imgs/applogo.png"/>
   <span class = "navbarBrandHeading">ID Card Design</span></a>
 </nav>   
 	<nav aria-label="breadcrumb" >
@@ -45,8 +57,6 @@
   <div class="card-header card-header-bg">
    <i class="far fa-address-card"></i>
    ID Card Design - Front View
-   <!-- <i class="far fa-eye float-right"></i>
-   <i class="d-none far fa-eye-slash float-right"></i> -->
   </div>
   <div class="card-body ">
    <form:form action = "idcardBackView" method = "POST" modelAttribute = "idCard">
@@ -220,7 +230,7 @@
        <div style="padding-top:-10px;" class="input-group-prepend ">
     	<span class="input-group-text form-control-sm">$</span>
 		</div>
-      <form:input type="text" class="form-control form-control-sm copayMapInput-1" path="copayMap['${copayMap.key}']"  />
+      <form:input readonly = "true" type="text" class="form-control form-control-sm copayMapInput-1" path="copayMap['${copayMap.key}']"  />
        <div class="input-group-append">
 			    <button class="btn btn-outline-default form-control-sm deleteCopay" type="button" id = "deleteCopay-${(status.index)+1}"
 			    data-toggle="tooltip" data-placement="top" title="Delete Copay"
@@ -241,13 +251,14 @@
        <div style="padding-top:-10px;" class="input-group-prepend ">
     	<span class="input-group-text form-control-sm">$</span>
 		</div>
-      <form:input type="text" class="form-control form-control-sm copayMapInput-1" path=""  />
+      <form:input readonly = "true" type="text" class="form-control form-control-sm copayMapInput-1" path=""  />
        <div class="input-group-append">
-			    <button class="btn btn-outline-default form-control-sm hiddendeleteCopay" type="button" id ="deleteCopay-0"
+			 	<button class="btn btn-outline-default form-control-sm hiddendeleteCopay" type="button" id = "deleteCopay-0"
 			    data-toggle="tooltip" data-placement="top" title="Delete Copay"
 			    style="padding-top:-10px;">
 			    <i class="align-top fas fa-trash"></i>
 			    </button>
+			    
 			  </div>
 			</div>
     </div>
